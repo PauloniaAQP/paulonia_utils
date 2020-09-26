@@ -9,7 +9,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
 
 class PUtils {
-  /// Verifies there is network connectivity
+  /// Verifies if there is network connectivity
   static Future<bool> checkNetwork() async {
     return (await Connectivity().checkConnectivity()) !=
         ConnectivityResult.none;
