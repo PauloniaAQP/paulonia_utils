@@ -1,12 +1,9 @@
 library paulonia_utils;
 
-import 'dart:io';
-
 import 'package:connectivity/connectivity.dart';
-import 'package:device_info/device_info.dart';
 import 'package:flutter/foundation.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:http/http.dart' as http;
+import 'package:paulonia_utils/paulonia_utils_mobile.dart'
+    if (dart.library.html) 'package:paulonia_utils/paulonia_utils_web.dart';
 
 class PUtils {
   /// Verifies if there is network connectivity
@@ -22,8 +19,7 @@ class PUtils {
 
   /// Verifies if the app is running in a test environment
   static bool isOnTest() {
-    if (isOnWeb()) return false;
-    return Platform.environment.containsKey('FLUTTER_TEST');
+    return PUtilsPlatform.isOnTest();
   }
 
   /// Verifies if the app is running on web
@@ -32,12 +28,8 @@ class PUtils {
   }
 
   /// Verifies if the app supports Apple Sign In
-  static Future<bool> supportsAppleSignIn() async {
-    if (isOnWeb()) return false;
-    if (!Platform.isIOS) return false;
-    var iosInfo = await DeviceInfoPlugin().iosInfo;
-    var version = iosInfo.systemVersion;
-    return version.contains('13');
+  static Future<bool> supportsAppleSignIn() {
+    return PUtilsPlatform.supportsAppleSignIn();
   }
 
   /// Get the Gmail profile URL with configurable [height] and [width]
@@ -75,15 +67,5 @@ class PUtils {
     res = photoUrl + '?height=' + height.toString();
     res += '&width=' + width.toString();
     return res;
-  }
-
-  /// Get a file image from a url
-  static Future<File> getImageFromUrl(String tempName, String url) async {
-    Directory tempDir = await getTemporaryDirectory();
-    String tempPath = tempDir.path;
-    File resFile = File(tempPath + tempName + '.jpg');
-    final response = await http.get(url);
-    await resFile.writeAsBytes(response.bodyBytes);
-    return resFile;
   }
 }
