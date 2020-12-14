@@ -27,6 +27,11 @@ class PUtils {
     return kIsWeb;
   }
 
+  /// Verifies if the app is running in iOS
+  static bool isOnIOS() {
+    return PUtilsPlatform.isOnIOS();
+  }
+
   /// Verifies if the app supports Apple Sign In
   static Future<bool> supportsAppleSignIn() {
     return PUtilsPlatform.supportsAppleSignIn();

@@ -8,6 +8,7 @@ Flutter package with general functions, get environment, get device, get network
 - **isOnRelease():** Verifies if the app is running on release.
 - **isOnTest():** Verifies if the app is running in a test environment.
 - **isOnWeb():** Verifies if the app is running on web
+- **isOnIOS():** Verifies if the app is running in iOS
 - **supportsAppleSignIn():** Verifies if the app supports Apple Sign In.
 - **getGmailProfileUrl():** Get the Gmail profile URL with configurable height and width. Generally used in Google login.
 - **getFacebookProfileUrl():** Get the Facebook profile URL with configurable height and width. Generally used in Facebook login.

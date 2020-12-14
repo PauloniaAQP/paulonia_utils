@@ -8,4 +8,9 @@ class PUtilsPlatform {
   static bool isOnTest() {
     return false;
   }
+
+  /// Verifies if the app is running in iOS
+  static bool isOnIOS() {
+    return false;
+  }
 }

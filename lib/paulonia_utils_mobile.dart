@@ -15,4 +15,9 @@ class PUtilsPlatform {
   static bool isOnTest() {
     return Platform.environment.containsKey('FLUTTER_TEST');
   }
+
+  /// Verifies if the app is running in iOS
+  static bool isOnIOS() {
+    return Platform.isIOS;
+  }
 }

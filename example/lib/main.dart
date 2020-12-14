@@ -58,6 +58,8 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(height: 40),
             PUtils.isOnWeb() ? Text("App is running in Web") : Text("App is not running in Web"),
             SizedBox(height: 40),
+            PUtils.isOnIOS() ? Text("App is running in iOS") : Text("App is not running in iOS"),
+            SizedBox(height: 40),
             FutureBuilder(
               future: PUtils.supportsAppleSignIn(),
               builder: (context, snap){
