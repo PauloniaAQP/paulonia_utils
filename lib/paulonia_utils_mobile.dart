@@ -4,10 +4,9 @@ import 'package:device_info/device_info.dart';
 import 'package:ntp/ntp.dart';
 
 class PUtilsPlatform {
-
   /// Verifies if there is network connectivity
-  static Future<bool> checkNetwork() async{
-    try{
+  static Future<bool> checkNetwork() async {
+    try {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
         return true;
@@ -37,7 +36,7 @@ class PUtilsPlatform {
   }
 
   /// Gets the actual NTP date
-  static Future<DateTime?> getNTPDate() async{
+  static Future<DateTime?> getNTPDate() async {
     return NTP.now();
   }
 }

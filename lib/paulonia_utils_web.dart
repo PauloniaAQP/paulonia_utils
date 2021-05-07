@@ -1,7 +1,6 @@
 class PUtilsPlatform {
-
   /// Verifies if there is network connectivity
-  static Future<bool> checkNetwork() async{
+  static Future<bool> checkNetwork() async {
     return true;
   }
 
@@ -21,7 +20,7 @@ class PUtilsPlatform {
   }
 
   /// Gets the actual NTP date
-  static Future<DateTime?> getNTPDate() async{
+  static Future<DateTime?> getNTPDate() async {
     return DateTime.now();
   }
 }

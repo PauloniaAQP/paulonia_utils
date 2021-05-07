@@ -6,11 +6,10 @@ import 'package:paulonia_utils/paulonia_utils_mobile.dart'
     if (dart.library.html) 'package:paulonia_utils/paulonia_utils_web.dart';
 
 class PUtils {
-
   /// Verifies if there is network connectivity
   static Future<bool> checkNetwork() async {
-    if((await Connectivity().checkConnectivity()) ==
-        ConnectivityResult.none) return false;
+    if ((await Connectivity().checkConnectivity()) == ConnectivityResult.none)
+      return false;
     return PUtilsPlatform.checkNetwork();
   }
 
@@ -77,10 +76,9 @@ class PUtils {
   }
 
   /// Gets the actual NTP date
-  static Future<DateTime?> getNTPDate() async{
-    if(PUtils.isOnTest()) return DateTime.now();
-    if(!(await checkNetwork())) return null;
+  static Future<DateTime?> getNTPDate() async {
+    if (PUtils.isOnTest()) return DateTime.now();
+    if (!(await checkNetwork())) return null;
     return PUtilsPlatform.getNTPDate();
   }
-
 }
