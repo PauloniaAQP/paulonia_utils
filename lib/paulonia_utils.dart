@@ -1,15 +1,28 @@
 library paulonia_utils;
 
+import 'dart:io';
+
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/foundation.dart';
 import 'package:paulonia_utils/paulonia_utils_mobile.dart'
     if (dart.library.html) 'package:paulonia_utils/paulonia_utils_web.dart';
 
 class PUtils {
+
   /// Verifies if there is network connectivity
   static Future<bool> checkNetwork() async {
-    return (await Connectivity().checkConnectivity()) !=
-        ConnectivityResult.none;
+    if((await Connectivity().checkConnectivity()) ==
+        ConnectivityResult.none) return false;
+    if(isOnWeb()) return true;
+    try{
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        return true;
+      }
+      return false;
+    } on SocketException catch (_) {
+      return false;
+    }
   }
 
   /// Verifies if the app is running on release

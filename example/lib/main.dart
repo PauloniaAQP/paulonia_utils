@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 if(snap.connectionState == ConnectionState.waiting){
                   return CircularProgressIndicator();
                 }
-                if(snap.data) Text("There is Internet");
+                if(snap.data) return Text("There is Internet");
                 return Text("There isn't Internet");
               }
             ),
