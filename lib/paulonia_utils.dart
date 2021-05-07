@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/foundation.dart';
+import 'package:ntp/ntp.dart';
 import 'package:paulonia_utils/paulonia_utils_mobile.dart'
     if (dart.library.html) 'package:paulonia_utils/paulonia_utils_web.dart';
 
@@ -86,4 +87,12 @@ class PUtils {
     res += '&width=' + width.toString();
     return res;
   }
+
+  /// Gets the actual NTP date
+  static Future<DateTime?> getNTPDate() async{
+    if(PUtils.isOnTest()) return DateTime.now();
+    if(!(await checkNetwork())) return null;
+    return NTP.now();
+  }
+
 }

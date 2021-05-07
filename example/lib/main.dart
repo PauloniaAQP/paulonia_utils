@@ -61,6 +61,17 @@ class _MyHomePageState extends State<MyHomePage> {
             PUtils.isOnIOS() ? Text("App is running in iOS") : Text("App is not running in iOS"),
             SizedBox(height: 40),
             FutureBuilder(
+                future: PUtils.getNTPDate(),
+                builder: (context, snap){
+                  if(snap.connectionState == ConnectionState.waiting){
+                    return CircularProgressIndicator();
+                  }
+                  if(snap.data == null) return Text("NTP date: No Internet");
+                  return Text("NTP date: " + snap.data.toString());
+                }
+            ),
+            SizedBox(height: 40),
+            FutureBuilder(
               future: PUtils.supportsAppleSignIn(),
               builder: (context, snap){
                 if(snap.connectionState == ConnectionState.waiting){
