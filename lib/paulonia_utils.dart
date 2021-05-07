@@ -1,10 +1,7 @@
 library paulonia_utils;
 
-import 'dart:io';
-
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/foundation.dart';
-import 'package:ntp/ntp.dart';
 import 'package:paulonia_utils/paulonia_utils_mobile.dart'
     if (dart.library.html) 'package:paulonia_utils/paulonia_utils_web.dart';
 
@@ -14,16 +11,7 @@ class PUtils {
   static Future<bool> checkNetwork() async {
     if((await Connectivity().checkConnectivity()) ==
         ConnectivityResult.none) return false;
-    if(isOnWeb()) return true;
-    try{
-      final result = await InternetAddress.lookup('google.com');
-      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        return true;
-      }
-      return false;
-    } on SocketException catch (_) {
-      return false;
-    }
+    return PUtilsPlatform.checkNetwork();
   }
 
   /// Verifies if the app is running on release
@@ -92,7 +80,7 @@ class PUtils {
   static Future<DateTime?> getNTPDate() async{
     if(PUtils.isOnTest()) return DateTime.now();
     if(!(await checkNetwork())) return null;
-    return NTP.now();
+    return PUtilsPlatform.getNTPDate();
   }
 
 }
