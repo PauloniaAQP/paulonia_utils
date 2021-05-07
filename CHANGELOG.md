@@ -1,3 +1,8 @@
+## [0.3.0]
+
+- `checkNetwork` updated.
+- `getNTPDate` function added.
+
 ## [0.2.0]
 
 - Migrate package to null safety
