@@ -75,10 +75,4 @@ class PUtils {
     return res;
   }
 
-  /// Gets the actual NTP date
-  static Future<DateTime?> getNTPDate() async {
-    if (PUtils.isOnTest()) return DateTime.now();
-    if (!(await checkNetwork())) return null;
-    return PUtilsPlatform.getNTPDate();
-  }
 }

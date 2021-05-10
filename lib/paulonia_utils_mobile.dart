@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:device_info/device_info.dart';
-import 'package:ntp/ntp.dart';
 
 class PUtilsPlatform {
   /// Verifies if there is network connectivity
@@ -35,8 +34,4 @@ class PUtilsPlatform {
     return Platform.isIOS;
   }
 
-  /// Gets the actual NTP date
-  static Future<DateTime?> getNTPDate() async {
-    return NTP.now();
-  }
 }

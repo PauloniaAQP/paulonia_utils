@@ -19,8 +19,4 @@ class PUtilsPlatform {
     return false;
   }
 
-  /// Gets the actual NTP date
-  static Future<DateTime?> getNTPDate() async {
-    return DateTime.now();
-  }
 }
