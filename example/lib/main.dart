@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:paulonia_utils/paulonia_utils.dart';
 
@@ -30,7 +29,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,51 +40,56 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             FutureBuilder(
-              future: PUtils.checkNetwork(),
-              builder: (context, snap){
-                if(snap.connectionState == ConnectionState.waiting){
-                  return CircularProgressIndicator();
-                }
-                if(snap.data) return Text("There is Internet");
-                return Text("There isn't Internet");
-              }
-            ),
+                future: PUtils.checkNetwork(),
+                builder: (context, snap) {
+                  if (snap.connectionState == ConnectionState.waiting) {
+                    return CircularProgressIndicator();
+                  }
+                  if (snap.data) return Text("There is Internet");
+                  return Text("There isn't Internet");
+                }),
             SizedBox(height: 40),
-            PUtils.isOnRelease() ? Text("App is in Release") : Text("App is not in Release"),
+            PUtils.isOnRelease()
+                ? Text("App is in Release")
+                : Text("App is not in Release"),
             SizedBox(height: 40),
-            PUtils.isOnTest() ? Text("App is in Test") : Text("App is not in Test"),
+            PUtils.isOnTest()
+                ? Text("App is in Test")
+                : Text("App is not in Test"),
             SizedBox(height: 40),
-            PUtils.isOnWeb() ? Text("App is running in Web") : Text("App is not running in Web"),
+            PUtils.isOnWeb()
+                ? Text("App is running in Web")
+                : Text("App is not running in Web"),
             SizedBox(height: 40),
-            PUtils.isOnIOS() ? Text("App is running in iOS") : Text("App is not running in iOS"),
+            PUtils.isOnIOS()
+                ? Text("App is running in iOS")
+                : Text("App is not running in iOS"),
             SizedBox(height: 40),
             FutureBuilder(
                 future: PUtils.getNTPDate(),
-                builder: (context, snap){
-                  if(snap.connectionState == ConnectionState.waiting){
+                builder: (context, snap) {
+                  if (snap.connectionState == ConnectionState.waiting) {
                     return CircularProgressIndicator();
                   }
-                  if(snap.data == null) return Text("NTP date: No Internet");
+                  if (snap.data == null) return Text("NTP date: No Internet");
                   return Text("NTP date: " + snap.data.toString());
-                }
-            ),
+                }),
             SizedBox(height: 40),
             FutureBuilder(
               future: PUtils.supportsAppleSignIn(),
-              builder: (context, snap){
-                if(snap.connectionState == ConnectionState.waiting){
+              builder: (context, snap) {
+                if (snap.connectionState == ConnectionState.waiting) {
                   return CircularProgressIndicator();
                 }
-                if(snap.data) return Text("The device supports Apple SignIn");
+                if (snap.data) return Text("The device supports Apple SignIn");
                 return Text("The device not support Apple SignIn");
               },
             ),
-
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
+        onPressed: () {
           setState(() {});
         },
       ),
