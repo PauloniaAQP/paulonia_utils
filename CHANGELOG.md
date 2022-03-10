@@ -1,3 +1,7 @@
+## [0.4.0]
+
+- Dependencies updated
+
 ## [0.3.0]
 
 - `checkNetwork` updated.
