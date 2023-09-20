@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key key = const Key(""), this.title = ""}) : super(key: key);
 
   final String title;
 
@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   if (snap.connectionState == ConnectionState.waiting) {
                     return CircularProgressIndicator();
                   }
-                  if (snap.data) return Text("There is Internet");
+                  if (snap.data != null) return Text("There is Internet");
                   return Text("There isn't Internet");
                 }),
             SizedBox(height: 40),
@@ -81,7 +81,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 if (snap.connectionState == ConnectionState.waiting) {
                   return CircularProgressIndicator();
                 }
-                if (snap.data) return Text("The device supports Apple SignIn");
+                if (snap.data != null)
+                  return Text("The device supports Apple SignIn");
                 return Text("The device not support Apple SignIn");
               },
             ),
