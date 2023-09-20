@@ -1,6 +1,6 @@
 library paulonia_utils;
 
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:paulonia_utils/paulonia_utils_mobile.dart'
     if (dart.library.html) 'package:paulonia_utils/paulonia_utils_web.dart';
