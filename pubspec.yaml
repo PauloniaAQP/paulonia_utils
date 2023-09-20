@@ -1,12 +1,12 @@
 name: paulonia_utils
 description: Flutter package with general functions, get environment, get
   device, get network status, etc.
-version: 0.4.0
+version: 0.5.0
 homepage: https://paulonia.dev
 repository: https://github.com/PauloniaAQP/paulonia_utils
 
 environment:
-  sdk: ">=2.19.2 <3.0.0"
+  sdk: ">=2.19.2 <4.0.0"
   flutter: ">=3.0.0"
 
 dependencies:
